@@ -1,5 +1,5 @@
 **/node_modules
-database/library.db
+# database/library.db
 
 ### VisualStudioCode ###
 .vscode/*
