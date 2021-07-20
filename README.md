@@ -1,10 +1,10 @@
-# EPLAN - Library
+# Angular Book Rental
 > Web application serving as a catalog of books, created during the internship for the EPLAN company. 
 > 
-> Available at: https://epl-library.herokuapp.com/ 
+> Available at: https://pagename.herokuapp.com/ 
 
 
-![Screenshot_2](https://user-images.githubusercontent.com/58706334/118702098-c7732180-b814-11eb-9ad9-3776c26e3c4d.jpg)
+![Screenshot_2]()
 
 
 
@@ -60,17 +60,6 @@
 - Database Diagram Online - https://app.quickdatabasediagrams.com/#/d/zIDYvq
 
 # Details & Settings
-
-### What information do we need to send emails after user confirm?
-
-    - host name e.g. smtp.gmail.com,
-    - port: e.g. 587,
-    - secure: false // true for 465, false for other ports
-
-    or - service e.g. gmail
-
-    - login,
-    - password
 
 ### Changing api url for production
 Change apiUrl varible in file library-client/src/environments/environment.prod.ts
