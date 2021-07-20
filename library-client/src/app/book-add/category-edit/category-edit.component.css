@@ -1,0 +1,42 @@
+mat-card {
+  width: 40%;
+  margin: auto;
+  margin-top: 3vh;
+  margin-bottom: 3vh;
+}
+mat-form-field,
+textarea {
+  width: 60%;
+}
+mat-card.category-list {
+  padding: 2vw;
+  margin-top: 3vw;
+  margin-bottom: 3vw;
+  width: 90%;
+  text-align: center;
+  background-color: rgb(54, 54, 54);
+}
+.new-categories {
+  text-align: center;
+}
+.title {
+  display: inline;
+  font-size: 2vw;
+  margin: 1vw;
+}
+mat-card-actions.add-category {
+  margin: 1.5vw;
+}
+.add-category-btn {
+  padding: 10px 20px;
+  font-size: 15px;
+}
+.category-list > mat-card-header {
+  display: inline;
+  font-size: 1.5vw;
+}
+
+.buttons {
+  width: 100%;
+  text-align: right;
+}

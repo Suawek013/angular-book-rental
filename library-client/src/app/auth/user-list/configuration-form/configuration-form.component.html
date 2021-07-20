@@ -1,0 +1,62 @@
+<app-admin-panel-header></app-admin-panel-header>
+<mat-card>
+      <h2>Konfiguracja</h2>
+      <form (submit)="updateConfig(configForm)" #configForm="ngForm" autocomplete="off">
+        <mat-form-field>
+
+          <input
+          matInput
+          type="text"
+          name="domain"
+          ngModel
+          [(ngModel)]="domain"
+          #domainInput="ngModel"
+          value="{{domain}}"
+          placeholder="Domena"
+          required="">
+          <!-- <label>Domena</label> -->
+        </mat-form-field>
+        <!-- <mat-form-field>
+          <input
+          matInput
+          type="text"
+          name="host"
+          ngModel
+          [(ngModel)]="host"
+          #hostInput="ngModel"
+          placeholder="host"
+          required="">
+        </mat-form-field>
+        <mat-form-field>
+          <input
+          matInput
+          type="number"
+          name="port"
+          ngModel
+          [(ngModel)]="port"
+          #portInput="ngModel"
+          placeholder="port"
+          pattern="^[1-9]\d*$"
+          required="">
+        </mat-form-field> -->
+<!-- do dokończenia - dokończyć radio buttony żeby działało i usunąć zbędny kod z user-list componenet (css) - popup-->
+
+        <!-- <mat-checkbox>Secure</mat-checkbox> -->
+
+        <!-- <mat-form-field>
+          <input
+          matInput
+          type="text"
+          name="secure"
+          ngModel
+          [(ngModel)]="secure"
+          #secureInput="ngModel"
+          placeholder="secure"
+          required="">
+        </mat-form-field> -->
+        <button mat-raised-button color="warn" type="submit">Zatwierdź zmiany</button>
+      </form>
+      <div class="error">
+
+      </div>
+</mat-card>

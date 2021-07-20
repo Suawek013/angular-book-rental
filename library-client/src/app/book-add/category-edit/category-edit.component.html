@@ -1,0 +1,66 @@
+<mat-card>
+  <form [formGroup]="categoryForm" (ngSubmit)="onSubmit()" autocomplete="off">
+    <div class="new-categories" formArrayName="new-categories">
+      <mat-card-header class="title">Edytuj kategorie</mat-card-header>
+      <mat-card-actions class="add-category">
+        <button
+          mat-raised-button
+          color="warn"
+          type="button"
+          class="add-category-btn"
+          (click)="onAddCategory()"
+        >
+          Dodaj kategorie
+        </button>
+      </mat-card-actions>
+
+      <mat-form-field *ngFor="let categoryControl of controls; let i = index">
+        <input
+          [formControlName]="i"
+          matInput
+          type="text"
+          placeholder="Nazwa kategorii"
+        />
+      </mat-form-field>
+    </div>
+    <mat-card class="category-list">
+      <mat-card-header>Dostępne kategorie</mat-card-header>
+
+      <mat-list formArrayName="categories">
+        <mat-list-item *ngFor="let category of categories">
+          {{ category.category_name }}
+          <div class="buttons">
+            <!-- <button
+              mat-button
+              color="primary"
+              type="button"
+              (click)="onEditCategory()"
+            >
+              EDIT
+            </button> -->
+            <button
+              mat-button
+              color="warn"
+              type="button"
+              (click)="onDeleteCategory(category.id)"
+            >
+              USUŃ
+            </button>
+          </div>
+        </mat-list-item>
+      </mat-list>
+    </mat-card>
+    <mat-card-actions style="text-align: center"
+      ><button
+        style="padding: 15px 20px; font-size: 18px"
+        mat-raised-button
+        color="warn"
+        type="submit"
+        [disabled]="!categoryForm.valid"
+      >
+        Zapisz zmiany
+      </button></mat-card-actions
+    >
+  </form>
+</mat-card>
+<!-- <back-button></back-button> -->

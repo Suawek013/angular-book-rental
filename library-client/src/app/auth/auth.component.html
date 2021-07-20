@@ -1,0 +1,5 @@
+<app-login *ngIf="isLoginMode"></app-login>
+<app-signup *ngIf="!isLoginMode"></app-signup>
+<h2 (click)="onSwitchMode()">
+  {{ isLoginMode ? 'Zarejestruj się' : 'Zaloguj się'}}
+</h2>

@@ -1,0 +1,105 @@
+.filters {
+  background-color: #1b1b1b;
+  position: absolute;
+  color: rgba(255, 255, 255, 0.8);
+  align-items: center;
+  font-weight: 600;
+  height: 75px;
+  border-bottom: 0.2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 3px 10px 0px rgba(0, 0, 0, 0.5);
+  z-index: 1;
+  width: 100%;
+  text-align: center;
+  overflow: hidden;
+  transition: 0.4s;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20vw 0 20vw;
+}
+
+.filters p {
+  font-size: 16px;
+  display: inline-block;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.button-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  text-align: right;
+}
+
+.userData {
+  font-size: 20px;
+  line-height: 60px;
+  background-color: rgb(44, 44, 44);
+  height: 320px;
+  padding: 20px 80px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px -5px black;
+}
+
+button {
+  font-size: 15px;
+  margin-top: 20px;
+}
+
+.delete {
+  position: relative;
+  font-size: 11px;
+  top: -22px;
+  left: 527px;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+.error {
+  position: absolute;
+  color: #a50505;
+  font-weight: bold;
+  padding-left: 149px;
+  padding-top: 0;
+  margin-top: -15px;
+  font-size: 14px;
+}
+
+.invalid {
+  position: absolute;
+  top: 16px;
+  left: -36px;
+  background-color: rgba(230, 0, 0, 0.74);
+  border-radius: 100%;
+  width: 10px;
+  height: 10px;
+}
+
+.valid {
+  position: absolute;
+  top: 16px;
+  left: -36px;
+  background-color: rgba(0, 230, 0, 0.74);
+  border-radius: 100%;
+  width: 10px;
+  height: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  .invalid {
+    display: none;
+  }
+
+  .valid {
+    display: none;
+  }
+}

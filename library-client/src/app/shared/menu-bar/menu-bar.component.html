@@ -1,0 +1,10 @@
+<div class="nav-bar">
+  <div class="mobileLogo">
+    <img src="../../assets/Images/eplan.png" width="60px" />
+  </div>
+  <a (click)="toggleMenu()" class="menu-icon"><mat-icon> toc </mat-icon></a>
+  <ul class="nav-links" (click)="toggleMenu()">
+    <ng-content></ng-content>
+  </ul>
+</div>
+<div style="height: 120px"></div>

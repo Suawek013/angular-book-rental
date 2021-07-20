@@ -1,0 +1,45 @@
+<borrow-list-panel-header></borrow-list-panel-header>
+
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+
+
+
+<table mat-table [dataSource]="this.borrows.slice().reverse()" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="title">
+    <th mat-header-cell *matHeaderCellDef> Pozycja </th>
+    <td mat-cell class="bookLink" *matCellDef="let borrow" [routerLink]="['../book', borrow.book_id]"> {{ borrow.title }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="borrow_date">
+    <th mat-header-cell *matHeaderCellDef> Data wypożyczenia </th>
+    <td mat-cell *matCellDef="let borrow"> {{borrow.borrow_date}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="return_date">
+    <th mat-header-cell *matHeaderCellDef> Data zwrotu </th>
+    <td mat-cell *matCellDef="let borrow"> {{borrow.return_date}}
+      <button mat-button *ngIf="borrow.return_date==null" color="primary" onclick="returnCheck()">
+      Oddaj książkę
+      </button>
+
+      <div class="curtain3" id="curtain3" onclick="closeCheck3()"></div>
+
+        <div id="returnCheck">
+          <div class="question" id="question2">Czy napewno chcesz oddać tę książkę?</div>
+          <button type="button" class="yes" (click)="returnBook(userId, borrow.book_id)" onclick="closeCheck3()">Tak</button>
+          <button type="button" class="no" onclick="closeCheck3()">Nie</button>
+        </div>
+  </td>
+  </ng-container>
+
+
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<mat-card *ngIf="borrows.length <= 0 && !isLoading">
+  Brak wypożyczonych książek
+</mat-card>
+

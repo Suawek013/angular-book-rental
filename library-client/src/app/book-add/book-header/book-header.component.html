@@ -1,0 +1,36 @@
+<app-menu-bar>
+  <li class="logo">
+    <a
+      mat-button
+      routerLinkActive="mat-raised-button"
+      routerLink="/book-add/book-list"
+      >Zarządzanie</a
+    >
+  </li>
+  <li class="item">
+    <a
+      mat-button
+      [routerLink]="['book-search']"
+      routerLinkActive="mat-raised-button"
+      >Wyszukaj nową książkę</a
+    >
+  </li>
+
+  <li class="item">
+    <a
+      mat-button
+      [routerLink]="['book-form']"
+      routerLinkActive="mat-raised-button"
+      >Dodaj książkę</a
+    >
+  </li>
+
+  <li class="item">
+    <a
+      mat-button
+      [routerLink]="['category-edit']"
+      routerLinkActive="mat-raised-button"
+      >Edytuj kategorie</a
+    >
+  </li></app-menu-bar
+>

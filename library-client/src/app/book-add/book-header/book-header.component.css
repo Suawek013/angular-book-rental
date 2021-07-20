@@ -1,0 +1,22 @@
+.logo a {
+  font-size: 1.3rem;
+}
+.item a {
+  font-size: 1.1rem;
+}
+.item a,
+.logo a {
+  padding: 20px;
+  height: 100%;
+  border-radius: 0;
+}
+@media screen and (max-width: 768px) {
+  .item a {
+    width: 100%;
+  }
+  .logo a {
+    width: 100%;
+    border-top: 0.2px solid rgba(255, 255, 255, 0.1);
+    /* box-shadow: 0 3px 10px 0px rgba(0, 0, 0, 0.5); */
+  }
+}

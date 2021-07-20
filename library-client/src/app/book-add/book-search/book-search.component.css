@@ -1,0 +1,9 @@
+mat-expansion-panel {
+  margin: auto;
+  margin-bottom: 1vw;
+  width: 60%;
+}
+
+mat-spinner {
+  margin:auto;
+}

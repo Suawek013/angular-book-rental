@@ -1,0 +1,110 @@
+* {
+  font-size: 1rem;
+}
+
+.nav-links {
+  height: 100%;
+  margin: 0;
+  width: 100%;
+  display: flex;
+  list-style: none;
+  justify-content: center;
+}
+
+.nav-links li {
+  list-style: none;
+}
+
+.nav-bar {
+  background-color: #161616;
+  color: rgba(255, 255, 255, 0.8);
+  position: absolute;
+  height: 75px;
+  border-bottom: 0.2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 3px 10px 0px rgba(0, 0, 0, 0.5);
+  z-index: 1;
+  width: 100%;
+  overflow: hidden;
+  transition: 0.4s;
+  color: #ffffffcc;
+}
+
+.menu-icon {
+  display: none;
+}
+
+.menu-icon mat-icon {
+  width: 100%;
+  font-size: 40px;
+}
+
+.mobileLogo {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .nav-bar p {
+    display: none;
+  }
+
+  .nav-bar::before {
+    font-weight: 600;
+    font-size: 16px;
+    content: "EPLAN - BIBLIOTEKA";
+    text-align: center;
+    display: block;
+    margin-left: 33px;
+  }
+
+  .nav-bar {
+    position: fixed;
+    padding-top: 30px;
+  }
+
+  .nav-bar {
+    height: 90px;
+  }
+
+  .mobileLogo {
+    position: absolute;
+    top: 18px;
+    left: 25px;
+    z-index: 999;
+    display: block;
+  }
+
+  .nav-bar {
+    position: fixed;
+  }
+
+  .nav-links {
+    margin-top: 85px;
+    display: none;
+  }
+
+  ul {
+    padding: 0;
+  }
+
+  .menu-icon {
+    position: absolute;
+    display: block;
+    top: 72px;
+    right: 22px;
+    transition: 0.5s;
+  }
+
+  .menu-icon:hover {
+    cursor: pointer;
+    color: #a50505;
+  }
+
+  .nav-bar.responsive .nav-links {
+    display: block;
+    flex-direction: column;
+  }
+
+  .nav-bar.responsive {
+    height: unset;
+  }
+}

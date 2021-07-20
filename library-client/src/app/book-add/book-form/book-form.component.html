@@ -1,0 +1,230 @@
+<mat-card class="main-mat-card--responsive">
+  <form (submit)="onSaveBook(bookForm)" #bookForm="ngForm" autocomplete="off">
+    <mat-form-field class="form-field__input--responsive">
+      <input
+        matInput
+        type="text"
+        name="isbn"
+        [ngModel]="book?.isbn"
+        required
+        placeholder="Kod ISBN"
+        #isbn="ngModel"
+        (change)="onCheckISBN(isbn.value, bookForm)"
+        [readonly]="this.canEdit"
+        pattern="^(?:ISBN(?:-1[03])?:? )?(?=[0-9X]{10}$|(?=(?:[0-9]+[- ]){3})[- 0-9X]{13}$|97[89][0-9]{10}$|(?=(?:[0-9]+[- ]){4})[- 0-9]{17}$)(?:97[89][- ]?)?[0-9]{1,5}[- ]?[0-9]+[- ]?[0-9]+[- ]?[0-9X]$"
+      />
+      <mat-error *ngIf="isbn.errors?.required">Pole obowiązkowe.</mat-error>
+      <mat-error *ngIf="isbn.errors?.pattern"
+        >Nieodpowiedni format ISBN</mat-error
+      >
+      <mat-error *ngIf="isbn.errors?.exists"
+        >Książka o tym ISBN już istnieje.</mat-error
+      >
+      <button
+        style="font-size: 22px"
+        matSuffix
+        *ngIf="this.canEdit"
+        mat-icon-button=""
+        type="button"
+        class="mat-focus-indicator mat-icon-button mat-button-base"
+        ng-reflect-disabled="false"
+        aria-haspopup="dialog"
+        aria-label="Open calendar"
+        tabindex="0"
+      >
+        <span class="mat-button-wrapper"
+          ><mat-icon class="edit-icon" (click)="onEditISBN()"
+            >mode_edit</mat-icon
+          ></span
+        ><span
+          matripple=""
+          class="mat-ripple mat-button-ripple mat-button-ripple-round"
+          ng-reflect-disabled="false"
+          ng-reflect-centered="true"
+          ng-reflect-trigger="[object HTMLButtonElement]"
+        ></span
+        ><span class="mat-button-focus-overlay"></span>
+      </button>
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        name="title"
+        [ngModel]="book?.title"
+        required
+        placeholder="Tytuł książki"
+        #title="ngModel"
+      />
+      <mat-error *ngIf="title.invalid">Pole obowiązkowe.</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        name="author"
+        [ngModel]="book?.author"
+        placeholder="Autor książki"
+        #author="ngModel"
+        required
+      />
+      <mat-error *ngIf="author.invalid">Pole obowiązkowe.</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        type="string"
+        name="publisher"
+        [ngModel]="book?.publisher"
+        placeholder="Wydawnictwo"
+        #publisher="ngModel"
+      />
+      <mat-error *ngIf="publisher.invalid">Pole obowiązkowe.</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <textarea
+        matInput
+        rows="4"
+        name="description"
+        [ngModel]="book?.description"
+        placeholder="Opis książki"
+        #description="ngModel"
+      ></textarea>
+      <mat-error *ngIf="description.invalid">Pole obowiązkowe.</mat-error>
+    </mat-form-field>
+    <mat-form-field
+      class="form-field__select--responsive"
+      appearance="fill"
+      style="display: block"
+    >
+      <mat-label>Wybierz datę publikacji</mat-label>
+      <input
+        [min]="minDate"
+        [max]="maxDate"
+        matInput
+        type="string"
+        name="publication_date"
+        [ngModel]="book?.publication_date"
+        #publication_date="ngModel"
+        [matDatepicker]="picker"
+        readonly
+      />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="publication_date.invalid">Pole obowiązkowe.</mat-error>
+    </mat-form-field>
+
+    <div *ngIf="canEdit">
+      <p>Przypisane kategorie: {{ editCategories }}</p>
+    </div>
+    <mat-form-field class="form-field__select--responsive" appearance="fill">
+      <mat-label>Kategorie</mat-label>
+      <mat-select [(ngModel)]="categories" name="selectedCategories" multiple>
+        <mat-option
+          class="mat-warn"
+          *ngFor="let category of categoryList"
+          [value]="category"
+          >{{ category.category_name }}</mat-option
+        >
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field style="width: 125px; display: block" *ngIf="!canEdit">
+      <input
+        matInput
+        type="number"
+        name="quantity"
+        [ngModel]="quantity.value"
+        placeholder="Ilość książek"
+        #quantity="ngModel"
+        min="1"
+        value="1"
+        required
+      />
+      <mat-error *ngIf="quantity.invalid || quantity.value <= 0"
+        >Pole obowiązkowe.</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        matInput
+        type="string"
+        name="image"
+        [ngModel]="book?.image"
+        placeholder="Scieżka URL zdjęcia ( http:// )"
+        #image="ngModel"
+        required
+      />
+      <mat-error *ngIf="image.invalid">Pole obowiązkowe.</mat-error>
+    </mat-form-field>
+
+    <div
+      class="book-img"
+      *ngIf="image.value && !canEdit"
+      style="width: 9vw; height: 13.5vw"
+    >
+      <img
+        style="height: 13vw; width: 8vw"
+        [src]="image.value"
+        (error)="onImageError($event, bookForm)"
+        alt="Podgląd zdjęcia"
+        #img
+      />
+    </div>
+
+    <div *ngIf="canEdit">
+      <mat-card class="books-mat-card--responsive">
+        <mat-card-title style="text-align: center; margin: 1.5vw">
+          Egzemplarze książki
+        </mat-card-title>
+        <mat-card-actions style="text-align: center; margin: 2vw">
+          <button
+            mat-raised-button
+            color="primary"
+            class="books-mat-card__add--size"
+            type="button"
+            (click)="onAddBookCopy()"
+            [disabled]="!canEdit && !bookForm.valid"
+          >
+            Dodaj egzemplarz
+          </button>
+        </mat-card-actions>
+        <mat-card-content>
+          <div class="book-image-container">
+            <div class="book-img" *ngFor="let bookCopy of bookCopies">
+              <img
+                [src]="image.value"
+                (error)="onImageError($event, bookForm)"
+                alt="Podgląd zdjęcia"
+                #img
+              />
+              <p>Data dodania: {{ bookCopy.date_added | date }}</p>
+
+              <button
+                mat-raised-button
+                color="warn"
+                type="button"
+                class="book-img__delete--spacing"
+                (click)="onDeleteBookCopy(bookCopy.id)"
+                [disabled]="!canEdit && !bookForm.valid"
+              >
+                Usuń
+              </button>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <button
+      mat-raised-button
+      color="warn"
+      type="submit"
+      [disabled]="!bookForm.valid"
+    >
+      Zapisz książkę
+    </button>
+  </form>
+</mat-card>

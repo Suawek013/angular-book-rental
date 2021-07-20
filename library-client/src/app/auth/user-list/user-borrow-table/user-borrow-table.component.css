@@ -1,0 +1,230 @@
+mat-expansion-panel {
+  width: 60%;
+  margin: auto;
+  margin-bottom: 1vw;
+}
+
+mat-radio-button {
+  display: block;
+  padding: 10px 20px;
+}
+
+.filters {
+  background-color: #1b1b1b;
+  position: absolute;
+  color: rgba(255, 255, 255, 0.8);
+  align-items: center;
+  font-weight: 600;
+  height: 75px;
+  border-bottom: 0.2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 3px 10px 0px rgba(0, 0, 0, 0.5);
+  z-index: 1;
+  width: 100%;
+  text-align: center;
+  overflow: hidden;
+  transition: 0.4s;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20vw 0 20vw;
+}
+
+.filters p {
+  font-size: 16px;
+  display: inline-block;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.configuration {
+  font-size: 14px;
+  font-weight: normal;
+}
+
+a.back {
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+.back .mat-raised-button {
+  padding: 0.3vw 1.5vw;
+}
+
+.back {
+  text-align: center;
+  margin-top: 7vh;
+  margin-bottom: 7vh;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto;
+  text-align: right;
+}
+
+.info {
+  text-align: left;
+}
+
+button {
+  margin-right: 20px;
+}
+
+.unverified {
+  color: red;
+  font-size: 13px;
+  margin-left: 20px;
+}
+
+#popup {
+  position: fixed;
+  top: 58%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 0;
+  width: 0;
+  opacity: 0;
+  background-color: #222222;
+  border-radius: 20px;
+  transition: 0.4s;
+  box-shadow: 0px 0px 25px 8px rgb(0, 0, 0);
+  color: white;
+  line-height: 30px;
+  padding: 40px;
+  padding-top: 50px;
+}
+
+#curtain {
+  position: fixed;
+  top: -100%;
+  left: -100%;
+  z-index: -100;
+  background-color: rgba(0, 0, 0);
+  width: 200vw;
+  height: 200vh;
+  opacity: 0;
+}
+
+.close {
+  position: fixed;
+  cursor: pointer;
+  right: 5%;
+  top: 5%;
+  transform: scale(3);
+  transition: 0.3s;
+}
+
+.close:hover {
+  transform: scale(4);
+}
+
+.config-box {
+  position: relative;
+}
+
+.config-box input {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid #fff;
+  outline: none;
+  background: transparent;
+}
+
+/* Change the white to any color ;) */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  box-shadow: 0 0 0 30px #222222 inset !important;
+  -webkit-text-fill-color: white !important;
+}
+
+.config-box label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  pointer-events: none;
+  transition: .5s;
+}
+
+.config-box input:focus~label,
+.config-box input:valid~label {
+  top: -25px;
+  left: 0;
+  font-size: 13px;
+  opacity: .7;
+}
+
+.configForm button {
+  margin-top: 0;
+  background-color: rgba(60, 60, 60, 0.6);
+  color: rgb(255, 255, 255);
+  width: 125px;
+  height: 40px;
+  border: 0 solid;
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0);
+  outline: 1px solid;
+  outline-color: rgba(255, 255, 255, .5);
+  outline-offset: 0px;
+  text-shadow: none;
+  transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.configForm button:hover {
+  cursor: pointer;
+  border: 1px solid;
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, .5), 0 0 20px rgba(255, 255, 255, .2);
+  outline-color: rgba(255, 255, 255, 0);
+  outline-offset: 15px;
+  text-shadow: 1px 1px 2px #427388;
+}
+
+.error {
+  position: absolute;
+  color: #a50505;
+  font-weight: bold;
+  width: 100%;
+  padding-left: 30px;
+  padding-top: 20px;
+}
+
+h2 {
+  margin-top: -34px;
+  margin-bottom: -5px;
+  color: #fff;
+  text-align: center;
+}
+
+table {
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+mat-card {
+  margin: 30px auto;
+  width: 20%;
+  padding: 20px;
+  text-align: center;
+}
+
+.bookLink {
+  cursor: pointer;
+  outline: none;
+}
+
+@media only screen and (max-width: 768px) {
+  .user-box input {
+    padding: 18px 0px 0px 0px;
+  }
+}

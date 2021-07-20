@@ -1,0 +1,224 @@
+<div class="goBack" id="goBack" routerLink="">
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="30"
+    height="30"
+    fill="currentColor"
+    class="goHomeArrow2"
+    viewBox="0 0 16 16"
+  >
+    <path
+      d="M5.921 11.9L1.353 8.62a.719.719 0 0 1 0-1.238L5.921 4.1A.716.716 0 0 1 7 4.719V6c1.5 0 6 0 7 8-2.5-4.5-7-4-7-4v1.281c0 .56-.606.898-1.079.62z"
+    />
+  </svg>
+</div>
+
+<div class="tags" id="tags">
+  <div class="bInfo1" id="bInfo1">
+    <div class="bTitle" id="bTitle">{{ book_data?.title }}</div>
+    <!-- <div class="bAuthor" id="bAuthor">{{ book_data?.author }}</div> -->
+  </div>
+</div>
+<div class="book">
+  <div class="bInfoMobile" id="bInfoMobile">
+    <div class="bInfo1Mobile" id="bInfo1Mobile">
+      <div class="bTitleMobile" id="bTitleMobile">
+        {{ book_data?.title }}
+      </div>
+      <div class="bAuthorMobile" id="bAuthorMobile">
+        {{ book_data?.author }}
+      </div>
+    </div>
+
+    <div class="bInfo2Mobile" id="bInfo2Mobile">
+      <div class="bPicMobile" id="bPicMobile">
+        <img
+          src="{{ book_data?.image }}"
+          alt="Book"
+          width="150px"
+          height="230px"
+        />
+      </div>
+
+      <div class="bInfo3Mobile" id="bInfo3Mobile">
+        <!-- <button
+          type="button"
+          class="btnMobile"
+          *ngIf="userIsAuthenticated"
+          (click)="borrowBook(userId, book.id)"
+        >
+          WYPOŻYCZ
+        </button>
+          <button
+            type="button"
+            class="btnGreyMobile"
+            title="Funkcja dostępna dla zalogowanych użytkowników."
+           *ngIf="!userIsAuthenticated"
+          >
+            WYPOŻYCZ
+          </button> -->
+      </div>
+
+      <div class="bDescMobile" id="bDescMobile">
+        <div class="publication">
+          <p class="publisher">Wydawca: {{ book_data?.publisher }}</p>
+          <p class="pDate">
+            Data wydania: {{ book_data?.publication_date | date }}
+          </p>
+        </div>
+        {{ book_data?.description }}
+      </div>
+    </div>
+
+    <div class="emptyField"></div>
+  </div>
+
+  <div class="bInfoMain" id="bInfoMain">
+    <!-- <div class="bInfo1" id="bInfo1">
+      <div class="bTitle" id="bTitle">{{ book_data?.title }}</div>
+      <div class="bAuthor" id="bAuthor">{{ book_data?.author }}</div>
+    </div> -->
+
+    <div class="bInfo2" id="bInfo2">
+      <div class="bPic" id="bPic">
+        <div class="bPicCont">
+          <img
+            src="{{ book_data?.image }}"
+            alt="Book"
+            width="150px"
+            height="230px"
+          />
+        </div>
+      </div>
+
+      <div
+        class="return"
+        *ngIf="userIsDifferent === false && bookIsBorrowed === true"
+      >
+        <button type="button" class="btnReturn" onclick="returnCheck()">
+          ODDAJ
+        </button>
+      </div>
+
+      <div
+        class="borrowGrey"
+        id="bookNotAvai"
+        *ngIf="userIsDifferent === true && bookIsBorrowed === true"
+      >
+        <button
+          type="button"
+          title="Książka wypożyczona"
+          class="btnGrey"
+          id="bookNotAvai"
+          disabled
+        >
+          Książka niedostępna
+        </button>
+      </div>
+
+      <div
+        class="borrow"
+        *ngIf="userIsAuthenticated && bookIsBorrowed === false"
+        onclick="borrowCheck()"
+      >
+        <button type="button" class="btn">WYPOŻYCZ</button>
+      </div>
+
+      <div
+        class="borrowGrey"
+        *ngIf="!userIsAuthenticated && bookIsBorrowed === false"
+      >
+        <button
+          type="button"
+          title="Funkcja dostępna dla zalogowanych użytkowników."
+          class="btnGrey"
+          disabled
+        >
+          WYPOŻYCZ
+        </button>
+      </div>
+
+      <div
+        class="bInfo3"
+        id="bInfo3"
+        *ngIf="bookIsBorrowed && userIsAuthenticated"
+      >
+        Wypożyczone przez:
+        <span style="color: rgb(255, 0, 128); margin-right: 5px"
+          >{{ borrow.firstName }} {{ borrow.lastName }}</span
+        >
+        Dnia:
+        <span style="color: rgb(255, 0, 128)">{{
+          borrow.borrow_date | date
+        }}</span>
+        <!-- date:"dd/mm/yy" -->
+      </div>
+
+      <div class="bDesc" id="bDesc">
+        <div class="publication">
+          <hr />
+          <p><span class="greySpan">Autor:</span> {{ book_data?.author }}</p>
+          <hr />
+          <p class="publisher">
+            <span class="greySpan">Wydawca:</span> {{ book_data?.publisher }}
+          </p>
+          <hr />
+          <p class="pDate">
+            <span class="greySpan">Data wydania:</span>
+            {{ book_data?.publication_date | date }}
+          </p>
+          <hr />
+          <p class="category">
+            <span class="greySpan">Kategorie:</span>
+            <span *ngFor="let category of categories; let i = index">
+              {{ category.category_name }}
+              <!-- Do not make space after last item -->
+              <span *ngIf="i != categories.length - 1">, </span>
+            </span>
+          </p>
+          <hr />
+        </div>
+        <span class="greySpan">Opis:</span> {{ book_data?.description }}
+      </div>
+    </div>
+  </div>
+
+  <div id="curtain" (click)="UNtoggle()"></div>
+  <div id="popup">
+    <app-auth *ngIf="userEmail != 'admin'"></app-auth>
+    <app-first-admin *ngIf="userEmail == 'admin'"></app-first-admin>
+    <a class="close" (click)="UNtoggle()">&times;</a>
+  </div>
+
+  <div class="curtain2" id="curtain2" onclick="closeCheck2()"></div>
+
+  <div id="borrowCheck">
+    <div class="question">Czy napewno chcesz wypożyczyć tę książkę?</div>
+    <button
+      type="button"
+      class="yes"
+      (click)="borrowBook(userId, book.id)"
+      onclick="closeCheck2()"
+    >
+      Tak
+    </button>
+    <button type="button" class="no" onclick="closeCheck2()">Nie</button>
+  </div>
+
+  <div class="curtain3" id="curtain3" onclick="closeCheck3()"></div>
+
+  <div id="returnCheck">
+    <div class="question" id="question2">
+      Czy napewno chcesz oddać tę książkę?
+    </div>
+    <button
+      type="button"
+      class="yes"
+      (click)="returnBook(userId, book.id)"
+      onclick="closeCheck3()"
+    >
+      Tak
+    </button>
+    <button type="button" class="no" onclick="closeCheck3()">Nie</button>
+  </div>
+</div>

@@ -1,0 +1,127 @@
+<div class="filters"></div>
+<div style="height: 120px"></div>
+
+<div class="container">
+  <div class="userData" style="color: white">
+    <div *ngIf="!isUserDataEditMode">
+      <b>Imię:</b> {{ user?.firstName }} <br />
+      <b>Nazwisko:</b> {{ user?.lastName }} <br />
+      <b>Email:</b> {{ user?.email }} <br />
+      <b>uprawnienia:</b> {{ user?.permission }}
+      <button
+        mat-button
+        color="primary"
+        (click)="onUserDataChangeMode()"
+        style="display: block; width: 100%"
+      >
+        Edytuj
+      </button>
+    </div>
+    <div class="userDataEdit" *ngIf="isUserDataEditMode && !isPasswordEditMode">
+      <form
+        autocomplete="off"
+        (submit)="
+          onEdit(user.id, user.email, user.password, user.permission, userForm)
+        "
+        #userForm="ngForm"
+      >
+        <mat-form-field style="padding-top: 14%">
+          <mat-label>Imię</mat-label>
+          <input
+            matInput
+            type="text"
+            name="firstName"
+            [(ngModel)]="user.firstName"
+            required=""
+          />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Nazwisko</mat-label>
+          <input
+            matInput
+            type="text"
+            name="lastName"
+            [(ngModel)]="user.lastName"
+            required=""
+          />
+        </mat-form-field>
+        <!-- <mat-form-field>
+          <mat-label>email</mat-label>
+          <input matInput type="email" name="email" [(ngModel)]="user.email" required=''>
+        </mat-form-field> -->
+        <div class="button-container">
+          <button type="button" mat-button color="primary" (click)="onUserDataChangeMode()">
+            Wróć
+          </button>
+          <button type="button" mat-button color="primary" (click)="onPasswordChangeMode()">
+            Zmień hasło
+          </button>
+          <button mat-button color="primary" type="submit">Zapisz</button>
+        </div>
+        <!-- <button class="delete" mat-button color="warn" (click)="onDelete();">Usuń konto</button> -->
+      </form>
+    </div>
+    <div class="userDataEdit" *ngIf="isPasswordEditMode">
+      <form
+        (submit)="
+          onPasswordChange(
+            user.id,
+            user.email,
+            user.firstName,
+            user.lastName,
+            user.permission,
+            passwordForm,
+            checkPassword
+          )
+        "
+        #passwordForm="ngForm"
+      >
+        <mat-form-field style="padding-top: 10%">
+          <mat-label>Wpisz nowe hasło</mat-label>
+          <input
+            matInput
+            type="password"
+            name="password"
+            #passwordInput="ngModel"
+            (ngModel)="(user.password)"
+            (input)="onInput1Change($event.target.value)"
+            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required
+            required=""
+          />
+          <mat-error *ngIf="passwordInput.invalid">Hasło musi zawierać co najmniej jedną liczbę, małą oraz dużą literę a długość hasła musi wynosić co najmniej 8 znaków</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Ponownie wpisz nowe hasło</mat-label>
+          <input
+            matInput
+            type="password"
+            name="password2"
+            #checkPassword
+            (ngModel)="(user.password)"
+            (input)="onInput2Change($event.target.value)"
+            required=""
+          />
+          <div
+            class="invalid"
+            *ngIf="errorCheck() && checkPassword.value.length > 0"
+          ></div>
+          <div
+            class="valid"
+            *ngIf="
+              !errorCheck() &&
+              !checkPassword.invalid &&
+              checkPassword.value.length > 0
+            "
+          ></div>
+        </mat-form-field>
+        <button type="button" mat-button color="primary" (click)="onPasswordChangeMode()">
+          Wróć
+        </button>
+        <button type="submit" mat-button color="primary" >Zapisz</button>
+      </form>
+      <div class="error">
+        {{ errorMessage }}
+      </div>
+    </div>
+  </div>
+</div>

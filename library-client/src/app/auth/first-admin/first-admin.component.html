@@ -1,0 +1,105 @@
+<div id="login-box2">
+  <h2>Zarejestruj się jako pierwszy administrator</h2>
+  <form (submit)="onEdit(userId, signupForm)" #signupForm="ngForm" autocomplete="off">
+    <!-- <div class="user-box"> -->
+    <!-- </div> -->
+      <mat-form-field>
+        <input
+          matInput
+          type="text"
+          name="firstName"
+          ngModel
+          #firstNameInput="ngModel"
+          required=""
+          placeholder="Imię"
+          autocomplete="random-string"
+        >
+        <mat-error *ngIf="firstNameInput.invalid">Pole obowiązkowe</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input
+          matInput
+          type="text"
+          name="lastName"
+          ngModel
+          #lastNameInput="ngModel"
+          required=""
+          placeholder="Nazwisko"
+          autocomplete="random-string"
+        >
+        <mat-error *ngIf="lastNameInput.invalid">Pole obowiązkowe</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input
+          matInput
+          type="email"
+          name="email"
+          ngModel
+          #emailInput="ngModel"
+          pattern=".+@{{ domain }}"
+          required=""
+          placeholder="E-mail"
+          autocomplete="random-string"
+        >
+        <mat-error *ngIf="emailInput.invalid"> *Email musi być zarejestrowany na domenę @{{ domain }}</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input
+          matInput
+          type="password"
+          name="password"
+          ngModel
+          #passwordInput="ngModel"
+          (input)="onInput1Change($event.target.value)"
+          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required
+          required=""
+          placeholder="Hasło"
+        >
+        <mat-error *ngIf="passwordInput.invalid">Hasło musi zawierać co najmniej jedną liczbę, małą oraz dużą literę a długość hasła musi wynosić co najmniej 8 znaków</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input
+          matInput
+          type="password"
+          name="checkPassword"
+          ngModel
+          #checkPassword="ngModel"
+          (input)="onInput2Change($event.target.value)"
+
+          required=""
+          placeholder="Powtórz hasło"
+        >
+      </mat-form-field>
+      <div
+            class="invalid"
+            *ngIf="errorCheck() && checkPassword.value.length > 0"
+          ></div>
+          <div
+            class="valid"
+            *ngIf="
+              !errorCheck() &&
+              !checkPassword.invalid &&
+              checkPassword.value.length > 0
+            "
+          ></div>
+    <!-- <div class="user-box">
+      <input type="text" name="lastName" ngModel #lastNameInput="ngModel" required="">
+      <label>Nazwisko</label>
+    </div>
+    <div class="user-box">
+      <input type="text" name="email" pattern=".+@{{ domain }}" ngModel #emailInput="ngModel" required email required="" autocomplete="off">
+      <label>E-mail</label>
+    </div>
+    <div class="user-box">
+      <input type="password" name="password" ngModel #passwordInput="ngModel" required="" autocomplete="off">
+      <label>Hasło</label>
+    </div> -->
+    <button type="submit">Zarejestruj</button>
+  </form>
+  <div class="error">
+    {{ errorMessage }}
+  </div>
+  <!-- <div class="alert" *ngIf="emailInput.invalid && emailInput.value != ''">
+    *Email musi być zarejestrowany na domenę @{{ domain }}
+  </div> -->
+</div>

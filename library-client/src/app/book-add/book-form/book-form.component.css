@@ -1,0 +1,117 @@
+/* * {
+  font-size: 1rem;
+} */
+mat-card.main-mat-card--responsive {
+  width: 45vw;
+  min-width: 300px;
+  margin: auto;
+  margin-top: 3vh;
+  margin-bottom: 3vh;
+}
+
+mat-form-field,
+textarea {
+  width: 100%;
+  margin-bottom: 0.9rem;
+}
+
+mat-form-field.form-field__input--responsive {
+  width: 11vw;
+  min-width: 135px;
+}
+
+mat-form-field.form-field__select--responsive {
+  width: 18vw;
+  min-width: 170px;
+}
+
+mat-card.books-mat-card--responsive {
+  width: 90%;
+  min-height: 350px;
+  margin-bottom: 3vw;
+  background-color: rgb(54, 54, 54);
+}
+
+.books-mat-card__add--size {
+  padding: 0.4rem 1.1rem;
+  font-size: 1rem;
+}
+
+.book-img {
+  background-color: rgba(0, 0, 0, 0.55);
+  text-align: center;
+  padding: 1.5rem;
+  width: 100px;
+  height: 250px;
+  border: 1px solid rgba(255, 255, 255, 0.225);
+  border-radius: 0.5vw;
+  margin: 3rem auto;
+  margin-top: 1rem;
+}
+
+.book-image-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+
+.book-img p {
+  height: 25%;
+  font-size: 0.8rem;
+}
+
+.book-img img {
+  height: 60%;
+  width: 100%;
+}
+
+.book-img__delete--spacing {
+  width: 100%;
+  /* margin-top: 1rem; */
+}
+
+.category-list {
+  width: 100%;
+}
+
+/* mat-select-value-text {
+  color: orange !important;
+} */
+a.back {
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+.back .mat-raised-button {
+  padding: 0.3vw 1.5vw;
+}
+
+.back {
+  position: absolute;
+  top: 95px;
+  left: 50px;
+  z-index: 1;
+}
+
+@media screen and (max-width: 1200px) {
+  mat-card.main-mat-card--responsive {
+    width: 60vw;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .book-image-container {
+    grid-template-columns: auto auto;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  mat-card.main-mat-card--responsive {
+    width: 80vw;
+  }
+  .book-image-container {
+    grid-template-columns: auto;
+  }
+}

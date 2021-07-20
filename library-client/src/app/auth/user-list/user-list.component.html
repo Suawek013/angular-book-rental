@@ -1,0 +1,206 @@
+<app-admin-panel-header></app-admin-panel-header>
+
+<div class="funnelContainer">
+  <div class="tag" id="tag1" onclick="showMore()">Filtruj</div>
+  <div onclick="showMore()" class="funnel" id="funnel">
+    <svg
+      width="1em"
+      height="1em"
+      viewBox="0 0 16 16"
+      class="bi bi-funnel"
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        fill-rule="evenodd"
+        d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2zm1 .5v1.308l4.372 4.858A.5.5 0 0 1 7 8.5v5.306l2-.666V8.5a.5.5 0 0 1 .128-.334L13.5 3.308V2h-11z"
+      />
+    </svg>
+  </div>
+</div>
+<div class="filterMenu" id="filterMenu">
+
+  <div class="tagF" (click)="changeFilterToAll()"><strong>Wszystko</strong></div>
+  <div class="tagF" (click)="changeFilter('blocked')">Zablokowani
+    <svg *ngIf="filter1 == 'blocked'" xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-check" id="checkJS" viewBox="0 0 16 16">
+      <path fill-rule="evenodd" d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.236.236 0 0 1 .02-.022z" />
+    </svg>
+  </div>
+
+  <div class="tagF" (click)="changeFilter(null)">Niezweryfikowani
+    <svg *ngIf="filter1 == null && filter2 != 'verified'" xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-check" id="checkJS" viewBox="0 0 16 16">
+      <path fill-rule="evenodd" d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.236.236 0 0 1 .02-.022z" />
+    </svg>
+  </div>
+  <div class="tagF" (click)="changeFilter('verified')">Zweryfikowani
+    <svg *ngIf="filter1 == 'verified'" xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-check" id="checkJS" viewBox="0 0 16 16">
+      <path fill-rule="evenodd" d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.236.236 0 0 1 .02-.022z" />
+    </svg>
+  </div>
+  <div class="tagF" (click)="changeFilter('canAddBooks')">Może dodawać książki
+    <svg *ngIf="filter1 == 'canAddBooks'" xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-check" id="checkJS" viewBox="0 0 16 16">
+      <path fill-rule="evenodd" d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.236.236 0 0 1 .02-.022z" />
+    </svg>
+  </div>
+  <div class="tagF" (click)="changeFilter('admin')">Administrator
+    <svg *ngIf="filter1 == 'admin'" xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-check" id="checkJS" viewBox="0 0 16 16">
+      <path fill-rule="evenodd" d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.236.236 0 0 1 .02-.022z" />
+    </svg>
+  </div>
+</div>
+
+
+<!-- <div class="filters"> -->
+  <!-- <p class="configuration" (click)="isTableMode=true" (click)="isConfigMode=false">Wypożyczenia</p> -->
+  <!-- <p (click)="isConfigMode=false" (click)="isTableMode=false" (click)="changeFilter('blocked')">Zablokowani</p>
+  <p (click)="isConfigMode=false" (click)="isTableMode=false" (click)="changeFilter(null)">Niezweryfikowani</p>
+  <p (click)="isConfigMode=false" (click)="isTableMode=false" (click)="changeFilter('verified')">Zweryfikowani</p>
+  <p (click)="isConfigMode=false" (click)="isTableMode=false" (click)="changeFilter('canAddBooks')">Może dodawać książki</p>
+  <p (click)="isConfigMode=false" (click)="isTableMode=false" (click)="changeFilter('admin')">Administrator</p>
+  <p (click)="isConfigMode=false" (click)="isTableMode=false" (click)="changeFilterToAll()">Wszystkie</p> -->
+  <!-- <p class="configuration" (click)="isConfigMode=true" (click)="isTableMode=false">Konfiguracja</p> -->
+<!-- </div> -->
+<!-- <div style="height: 130px"></div> -->
+
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+<mat-accordion multi="true" *ngIf="users.length > 0 && !isLoading && !isConfigMode && !isTableMode">
+  <div *ngFor="let user of users.slice().reverse()">
+    <mat-expansion-panel
+      *ngIf="user.permission == filter1 || filter2 || filter3 || filter4"
+    >
+      <mat-expansion-panel-header>
+        {{ user.firstName }} {{ user.lastName }}
+        <div class="unverified" *ngIf="user.permission == null">
+          NIEZWERYFIKOWANY
+        </div>
+        <div class="userHaveBook" *ngIf="checkIfUserHaveBook(user.id) != null">
+          {{ checkIfUserHaveBook(user.id) }}
+        </div>
+      </mat-expansion-panel-header>
+      <div class="grid-container">
+        <div class="info">
+          <p><strong>Imię: </strong>{{ user.firstName }}</p>
+          <p><strong>Nazwisko: </strong>{{ user.lastName }}</p>
+          <p><strong>e-mail: </strong>{{ user.email }}</p>
+          <p>
+            <strong>Uprawnienia: </strong
+            >{{
+              user.permission == "blocked"
+                ? "Zablokowany"
+                : user.permission == "verified"
+                ? "Zweryfikowany"
+                : user.permission == "canAddBooks"
+                ? "Może dodawać książki"
+                : user.permission == "admin"
+                ? "Administrator"
+                : "Niezweryfikowany"
+            }}
+          </p>
+        </div>
+
+        <div *ngIf="isEditMode">
+          <form
+            (submit)="
+              onEdit(
+                user.id,
+                user.email,
+                user.password,
+                user.firstName,
+                user.lastName,
+                userForm
+              )
+            "
+            #userForm="ngForm"
+          >
+            <mat-radio-group
+              [ngModelOptions]="{ standalone: true }"
+              aria-label="Uprawnienia"
+              [(ngModel)]="user.permission"
+              #permission="ngModel"
+              required
+            >
+              <mat-radio-button
+                value="verified"
+                name="permission"
+                [(ngModel)]="user.permission"
+                >Brak dodatkowych uprawnień</mat-radio-button
+              >
+              <mat-radio-button
+                value="canAddBooks"
+                name="permission"
+                [(ngModel)]="user.permission"
+                >Może dodawać książki</mat-radio-button
+              >
+              <mat-radio-button
+                value="admin"
+                name="permission"
+                [(ngModel)]="user.permission"
+                >Administrator</mat-radio-button
+              >
+            </mat-radio-group>
+            <button mat-button color="primary" color="warn" type="submit">
+              Zapisz
+            </button>
+          </form>
+        </div>
+      </div>
+      <mat-action-row>
+        <button mat-button color="accent">
+          <a href="mailto:{{user.email}}"> Wyślij e-mail </a>
+        </button>
+
+        <button mat-button color="accent" [routerLink]="['../user-borrow-table', user.id]">
+          Historia wypożyczeń
+        </button>
+
+        <button
+          mat-button
+          color="primary"
+          *ngIf="user.permission == null"
+          (click)="
+            verifyUser(
+              user.id,
+              user.email,
+              user.password,
+              user.firstName,
+              user.lastName,
+              user.permission
+            )
+          "
+          (click)="user.permission = 'verified'"
+        >
+          Zatwierdź użytkownika
+        </button>
+        <button
+          mat-button
+          color="primary"
+          (click)="onChangeMode()"
+          *ngIf="user.permission != null"
+        >
+          Zmień uprawnienia
+        </button>
+        <button
+          mat-button
+          color="warn"
+          (click)="
+            onBlock(
+              user.id,
+              user.email,
+              user.password,
+              user.firstName,
+              user.lastName,
+              user.permission
+            )
+          "
+          (click)="user.permission = 'blocked'"
+          *ngIf="user.permission != 'blocked'"
+        >
+          Zablokuj
+        </button>
+      </mat-action-row>
+    </mat-expansion-panel>
+  </div>
+</mat-accordion>
+<p class="info-text mat-body-1" *ngIf="users.length <= 0 && !isLoading">
+  Brak użytkowników
+</p>

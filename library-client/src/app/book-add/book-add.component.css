@@ -1,0 +1,265 @@
+div {
+  color: white;
+}
+.search-form {
+  text-align: center;
+  margin-top: 3vw;
+  margin-bottom: 3vw;
+}
+
+.search-text {
+  width: 50vw;
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  border: 0px solid;
+  border-radius: 10px;
+  font-size: 20px;
+  padding: 10px;
+  box-sizing: border-box;
+  outline: none;
+  margin-top: 26px;
+  color: rgb(207, 207, 207);
+  z-index: 2;
+  transition: 0.5s;
+  background-color: #3d3d3d;
+}
+
+.search-text:focus {
+  box-shadow: 0 0 15px -3px rgb(0, 0, 0);
+  outline: none;
+}
+
+.search-text:hover {
+  cursor: pointer;
+}
+
+::placeholder {
+  color: whitesmoke;
+  opacity: 0.7;
+}
+
+.search-icon {
+  text-align: left;
+  margin-left: 2vw;
+  display: inline-block;
+  font-size: 50px;
+  transform: rotate(-45deg);
+  font-weight: 100;
+  text-shadow: 0px 0px 1px black;
+  width: 50px;
+  height: 30px;
+  z-index: 10;
+  color: rgba(255, 255, 255, 0.7);
+  
+}
+
+.search-icon:hover {
+  color: rgba(255, 255, 255, 0.9);
+  cursor: pointer;
+}
+
+.info-text {
+  text-align: center;
+  color: white;
+  font-size: 22px;
+  margin: 5vw;
+  margin-bottom: 6vw;
+}
+
+.book-container {
+  /* display: grid; */
+  float: left;
+  padding: 10px;
+  /* justify-content: center; */
+  height: 100%;
+}
+
+.book {
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.65);
+  /* border: 1px solid rgba(0, 0, 0, 0.8); */
+  padding: 1.5vw;
+  font-size: 30px;
+  text-align: center;
+  margin: 1.5vw;
+  margin-top: 0;
+  margin-left: 0;
+  width: 10vw;
+  height: 21vw;
+  background-size: contain;
+  transition: 0.5s;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  overflow: hidden;
+  border-radius: 0.5vw;
+}
+
+.book-image img {
+  /* margin-top: 2vw; */
+  height: 13vw;
+  width: 8vw;
+  /* transform: scale(1.3); */
+  margin-bottom: 3vw;
+  z-index: 0;
+  transition: 0.5s;
+}
+
+.overlay {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: 0.5s;
+}
+
+.overlayNOT {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: 0.5s;
+}
+
+.overlayYes {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: 0.5s;
+}
+
+
+.overlay-text {
+  padding-top: 40%;
+  padding-right: 10%;
+  padding-left: 10%;
+  color: white;
+  font-weight: bold;
+  margin: 0 auto;
+  font-size: 1vw;
+  text-shadow: 3px 3px 5px black;
+}
+
+.available {
+  padding-top: 50%;
+  color: white;
+  font-weight: bold;
+  margin: 0 auto;
+  font-size: 1vw;
+  text-shadow: 3px 3px 5px black;
+}
+
+.notAvailable {
+  padding-top: 50%;
+  color: white;
+  font-weight: bold;
+  margin: 0 auto;
+  font-size: 1vw;
+  text-shadow: 3px 3px 5px black;
+}
+
+.book p {
+  color: white;
+  opacity: 0.8;
+  text-align: left;
+  padding: 0;
+}
+
+.book-title {
+  font-weight: 600;
+  font-size: 1vw;
+  margin: 0;
+  padding: 0;
+}
+
+.book-author {
+  font-size: 1vw;
+}
+
+.book:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+  text-shadow: 3px 3px 5px black;
+}
+
+@media screen and (max-width: 1600px) {
+  .book {
+    /* width: 14vw;
+    height: 30vw; */
+    width: 12vw;
+    height: 26vw;
+  }
+
+  .book p {
+    margin: 0 0.8vw;
+  }
+
+  .book-image img {
+    height: 15vw;
+    width: 10vw;
+    margin-top: 2vw;
+    /* margin-top: 3vw; */
+  }
+
+  .book-title {
+    font-size: 1.4vw;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .book {
+    width: 14vw;
+    height: 30vw;
+  }
+
+  .book p {
+    margin: 0 0.8vw;
+  }
+
+  .book-image img {
+    height: 15vw;
+    width: 10vw;
+    margin-top: 3vw;
+  }
+
+  .book-title {
+    font-size: 1.4vw;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .book {
+    width: 28vw;
+    height: 56vw;
+  }
+
+  .book-image img {
+    height: 30vw;
+    width: 20vw;
+    margin-top: 6vw;
+    margin-bottom: 5vw;
+  }
+
+  .book-title {
+    padding-top: 10px;
+    font-size: 2.8vw;
+  }
+
+  .book-author {
+    font-size: 2vw;
+  }
+
+  .overlay-text {
+    font-size: 2vw;
+  }
+
+  .available {
+    font-size: 2vw;
+  }
+
+  .notAvailable {
+    font-size: 2vw;
+  }
+}

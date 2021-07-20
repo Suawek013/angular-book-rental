@@ -1,0 +1,20 @@
+mat-card {
+  width: 30%;
+  margin: auto;
+  margin-top: 3vh;
+  margin-bottom: 3vh;
+  padding: 35px;
+}
+
+mat-form-field,
+textarea {
+  width: 100%;
+}
+
+button {
+  margin-top: 10px;
+}
+
+mat-checkbox {
+  display: block;
+}
