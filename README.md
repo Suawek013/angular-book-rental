@@ -1,10 +1,11 @@
+
 # Angular Book Rental
 > Web application serving as a catalog of books, created during the internship for the EPLAN company. 
 > 
 > Available at: https://angular-book-rental.herokuapp.com/ 
 
 
-![Screenshot_2]()
+![Screenshot_2](https://user-images.githubusercontent.com/58706334/126484580-9a8b25ba-3920-47bb-ac66-7e701c9f82bc.jpg)
 
 
 
