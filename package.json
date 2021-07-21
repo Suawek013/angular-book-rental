@@ -1,7 +1,7 @@
 {
-	"name": "epl-library",
+	"name": "angular-book-rental",
 	"version": "1.0.0",
-	"description": "test nodejs heroku",
+	"description": "online book rental created in Angular",
 	"main": "./server/index.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
