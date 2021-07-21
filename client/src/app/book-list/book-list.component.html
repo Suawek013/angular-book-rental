@@ -250,8 +250,8 @@
         </button>
         <div id="curtain" (click)="UNtoggle()"></div>
         <div id="popup">
-          <app-auth *ngIf="userEmail != 'admin'"></app-auth>
-          <app-first-admin *ngIf="userEmail == 'admin'"></app-first-admin>
+          <app-auth *ngIf="userEmail !== 'admin'"></app-auth>
+          <app-first-admin *ngIf="userEmail === 'admin'"></app-first-admin>
           <a class="close" (click)="UNtoggle()">&times;</a>
         </div>
       </div>

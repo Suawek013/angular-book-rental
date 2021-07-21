@@ -31,7 +31,11 @@ export class AuthService {
   private users: AuthData[] = [];
   private usersUpdated = new Subject<AuthData[]>();
 
-  constructor(private http: HttpClient, private router: Router, readonly snackBar: MatSnackBar) { }
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    readonly snackBar: MatSnackBar
+  ) {}
 
   getToken() {
     return this.token;
@@ -148,7 +152,11 @@ export class AuthService {
               'Twoje konto zostało zablokowane przez administratora';
             this.errorMessageListener.next(this.errorMessage);
           } else if (token) {
-            this.snackBar.open('Zalogowano', '', { horizontalPosition: 'start', duration: 4000, panelClass: ['snackBar'] });
+            this.snackBar.open('Zalogowano', '', {
+              horizontalPosition: 'start',
+              duration: 4000,
+              panelClass: ['snackBar'],
+            });
             const expiresInDuration = response.expiresIn;
             this.setAuthTimer(expiresInDuration);
             this.isAuthenticated = true;
@@ -196,10 +204,7 @@ export class AuthService {
     const token = localStorage.getItem('token');
     const tokenData = { token: token };
     this.http
-      .post<{ message: string; users: any }>(
-        apiUrl + '/api/user',
-        tokenData
-      )
+      .post<{ message: string; users: any }>(apiUrl + '/api/user', tokenData)
       .subscribe((data) => {
         this.users = data.users;
         this.usersUpdated.next([...this.users]);
@@ -212,7 +217,7 @@ export class AuthService {
     return this.http.post<{ message: string; document: AuthData }>(
       apiUrl + '/api/user/' + userId,
       tokenData
-    )
+    );
   }
 
   autoAuthUser() {
@@ -237,7 +242,11 @@ export class AuthService {
   }
 
   logout() {
-    this.snackBar.open('Wylogowano', '', { horizontalPosition: 'start', duration: 4000, panelClass: ['snackBar'] });
+    this.snackBar.open('Wylogowano', '', {
+      horizontalPosition: 'start',
+      duration: 4000,
+      panelClass: ['snackBar'],
+    });
     this.token = null;
     this.isAuthenticated = false;
     this.authStatusListener.next(false);
@@ -342,7 +351,11 @@ export class AuthService {
     this.http
       .put<{ errorMessage: string }>(apiUrl + '/api/user/' + id, user)
       .subscribe((responseData) => {
-        this.snackBar.open('Zaktualizowano dane użytkownika', '', { horizontalPosition: 'start', duration: 4000, panelClass: ['snackBar'] });
+        this.snackBar.open('Zaktualizowano dane użytkownika', '', {
+          horizontalPosition: 'start',
+          duration: 4000,
+          panelClass: ['snackBar'],
+        });
         this.errorMessage = responseData.errorMessage;
         this.errorMessageListener.next(this.errorMessage);
         const updatedUsers = [...this.users];

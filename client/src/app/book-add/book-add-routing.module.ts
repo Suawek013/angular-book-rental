@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BookAddComponent } from './book-add.component';
 import { BookFormComponent } from './book-form/book-form.component';
-import { FormList } from './book-form/form-list/form-list.component';
+import { FormList } from './form-list/form-list.component';
 import { BookSearchComponent } from './book-search/book-search.component';
 import { CategoryEditComponent } from './category-edit/category-edit.component';
 

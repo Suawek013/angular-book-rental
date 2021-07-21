@@ -1,13 +1,13 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 
-import { Book_data } from '../../../book_data.model';
-import { BooksDataService } from '../../../books-data.service';
+import { Book_data } from '../../book_data.model';
+import { BooksDataService } from '../../books-data.service';
 
 @Component({
   selector: 'app-form-list',
   templateUrl: './form-list.component.html',
-  styleUrls: ['./form-list.component.css', '../../book-add.component.css'],
+  styleUrls: ['./form-list.component.css', '../book-add.component.css'],
 })
 export class FormList implements OnInit, OnDestroy {
   books: Book_data[] = [];
@@ -15,7 +15,7 @@ export class FormList implements OnInit, OnDestroy {
   searchText = '';
   private booksSub: Subscription;
 
-  constructor(public booksDataService: BooksDataService) { }
+  constructor(public booksDataService: BooksDataService) {}
 
   onDelete(bookId: string) {
     this.booksDataService.deleteBook(bookId);

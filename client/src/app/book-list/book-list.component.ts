@@ -144,15 +144,12 @@ export class BookListComponent implements OnInit, OnDestroy, AfterContentInit {
           this.borrows = [];
         }
       });
+
     // this.isAuthenticated = this.authService.getIsAuth();
 
     // if (this.isAuthenticated) {
 
     // }
-
-    this.booksService.getBooksWithData().subscribe((documents) => {
-      this.books = documents.books;
-    });
 
     this.userEmail = this.authService.getUserEmail();
     this.getUserEmailListener = this.authService
@@ -160,6 +157,10 @@ export class BookListComponent implements OnInit, OnDestroy, AfterContentInit {
       .subscribe((email) => {
         this.userEmail = email;
       });
+
+    this.booksService.getBooksWithData().subscribe((documents) => {
+      this.books = documents.books;
+    });
 
     this.categoriesService.getCategories();
     this.categoriesService.getCategoriesUpdateListener().subscribe((data) => {
