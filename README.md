@@ -63,7 +63,7 @@
 # Details & Settings
 
 ### Changing api url for production
-Change apiUrl variable in file library-client/src/environments/environment.prod.ts
+Change apiUrl variable in file client/src/environments/environment.prod.ts
 
 ### Heroku limits
 - If an app has a free web dyno, and that dyno receives no web traffic in a 30-minute period, it will sleep.
